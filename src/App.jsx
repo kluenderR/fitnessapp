@@ -1,13 +1,14 @@
 import { useState } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+//import "./App.css";
+import Start from "./components/Start";
 
 function App() {
   const [count, setCount] = useState(0);
 
   return (
-    <div className="App">
-      <header className="App-header">
+    <div>
+     <Start />;
+     {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <h1 className="text-3xl font-poppins underline">Hello world!</h1>
         <p>
@@ -40,7 +41,7 @@ function App() {
             Vite Docs
           </a>
         </p>
-      </header>
+  </header>*/}
     </div>
   );
 }
