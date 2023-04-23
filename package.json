@@ -8,8 +8,10 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@apollo/client": "^3.7.12",
+    "graphql": "^16.6.0",
     "react": "^18.2.0",
-    "react-devtools": "^4.27.4",
+    "react-devtools": "^2.1.7",
     "react-dom": "^18.2.0"
   },
   "devDependencies": {
