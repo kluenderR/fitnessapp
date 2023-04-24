@@ -8,6 +8,7 @@ import {
 } from "@apollo/client";
 import "./index.css";
 import Dashboard from "./app/Dashboard";
+import Navbar from "./components/Navbar";
 
 const client = new ApolloClient({
   uri: "https://api-eu-central-1-shared-euc1-02.hygraph.com/v2/clgi7bi0821ti01uj6y06gfsg/master",
