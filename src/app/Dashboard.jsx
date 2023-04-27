@@ -26,7 +26,7 @@ const Dashboard = () => {
   return (
     <DefaultLayout>
       <h1 className=" text-4xl , font-bold , text-light , px-6 , pt-5, m-0, pt-6">
-        Hi Name! {data.programs[0].name}
+        Hi Name! 
       </h1>
       <img
         src="./images/img/Layer 11 1.png"
@@ -40,8 +40,8 @@ const Dashboard = () => {
           Trainingsplan
         </p>
       </div>
-      <h2 className=" text-light text-center py-12 bg-medium_dark rounded-3xl mx-5">
-        Hello World
+      <h2 className=" text-light h-40 px-6 pt-24 bg-medium_dark rounded-3xl mx-5">
+      {data.programs[0].name}
       </h2>
     </DefaultLayout>
   );
