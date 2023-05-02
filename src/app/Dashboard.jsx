@@ -1,8 +1,7 @@
+import { useQuery, gql } from "@apollo/client";
 import DefaultLayout from "../layouts/DefaultLayout";
-import { useQuery, gql
- } from "@apollo/client";
 
- const PROGRAMS = gql`
+const PROGRAMS = gql`
   query Programs {
     programs {
       name
@@ -26,7 +25,7 @@ const Dashboard = () => {
   return (
     <DefaultLayout>
       <h1 className=" text-4xl , font-bold , text-light , px-6 , pt-5, m-0, pt-6">
-        Hi Name! 
+        Hi Name!
       </h1>
       <img
         src="./images/img/Layer 11 1.png"
@@ -41,7 +40,7 @@ const Dashboard = () => {
         </p>
       </div>
       <h2 className=" text-light h-40 px-6 pt-24 bg-medium_dark rounded-3xl mx-5">
-      {data.programs[0].name}
+        {data.programs[0].name}
       </h2>
     </DefaultLayout>
   );

@@ -10,7 +10,6 @@ function App() {
       <Route path="/profile" element={<Profile />} />
       <Route path="/browser" element={<Browser />} />
       <Route path="/" element={<Dashboard />} />
-      <Route path="#" element={<NoMatch />} />
 
       {/* Using path="*"" means "match anything", so this route
                 acts like a catch-all for URLs that we don't have explicit
