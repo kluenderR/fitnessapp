@@ -24,19 +24,36 @@ const Profile = () => {
   return (
     <DefaultLayout>
       <h1 className=" text-2xl , font-bold , text-light , px-6 , pt-5, m-0, pt-6">
-      Name
+        Name
       </h1>
+      <div className="h-full flex flex-col text-light justify-items-center">
+        <img
+          src="./images/img/Kreis.png"
+          className="h-32 w-32 mx-auto mt-16"
+          alt="Kreis"
+        />
+        <p className="text-xs font normal align-middle text-center">
+          Profil bearbeiten
+        </p>
+        <p className="text-xs font normal mx-5 mt-9">Aktueller Trainingsplan</p>
+        <div className=" h-32 px-6 bg-medium_dark rounded-3xl mx-5 flex flex-row text-light  items-center">
+          <img
+            src="./images/svg/Prozent.svg"
+            className="text-base font normal text-light"
+            alt=""
+          />
+          <img src="./images/svg/Group8.svg" alt="" />
+          <div className="flex flex-col flex-nowrap"></div>
+          <p className="text-base font normal text-light">
+            {data.programs[0].name}
+          </p>
+          <p className="text-xs font normal text-light">
+            {data.programs[0].focus}1 von 8 geschafft
+          </p>
+        </div>
+      </div>
     </DefaultLayout>
   );
 };
 export default Profile;
-/*   </div>
-        <p className="font-normal text-m" >Aktueller Trainingsplan</p>
-        <div className="bg-bgmedium m-0 pt-16 rounded-2xl px-4 pb-3 h-auto shadow-white flex gap-4">
-            <img src="./img/profile_circle.jpg" className='w-18 h-18 '></img>
-            <img src="./img/profile_circle.svg" className='w-18 h-18 '></img>
-            <div>
-                <p className="font-normal text-m pt-2" >Titel des Programms</p>
-                <p className="font-normal text-sm pt-2" >1 von 8 geschafft</p>
-                <p className="font-normal text-xs pt-2" >1 von 8 geschafft</p>
-            </div> */
+/*  Titel des Programms */

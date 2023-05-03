@@ -12,10 +12,10 @@ const NoMatch = () => {
         <Link to="/" className="text-center text-light mx-5 pt-6 pl-5">
           Go to the home page
         </Link>
-        <div className=" mx-auto">
+        <div className="mx-auto">
           <img
             src="https://assets.ccbp.in/frontend/react-js/not-found-img.png"
-            className="h-52 w-52"
+            className="h-58 w-58 mx-auto my-0 pr-6 pl-3 scale-75"
             alt="not found"
           />
         </div>

@@ -34,10 +34,4 @@ body {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }*/
-.nav svg.active {
-  stroke: #FBFBFB ;
-}
-.nav svg.inactive {
-  stroke: #3A4151;
-}
 
