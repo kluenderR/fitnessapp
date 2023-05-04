@@ -43,13 +43,14 @@ const Profile = () => {
             alt=""
           />
           <img src="./images/svg/Group8.svg" alt="" />
-          <div className="flex flex-col flex-nowrap"></div>
+          <div className="flex flex-col">
           <p className="text-base font normal text-light">
             {data.programs[0].name}
           </p>
           <p className="text-xs font normal text-light">
             {data.programs[0].focus}1 von 8 geschafft
           </p>
+          </div>
         </div>
       </div>
     </DefaultLayout>
