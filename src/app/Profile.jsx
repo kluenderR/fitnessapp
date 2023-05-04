@@ -6,6 +6,7 @@ const PROGRAMS = gql`
     programs {
       name
       id
+      focus
     }
   }
 `;
@@ -36,7 +37,7 @@ const Profile = () => {
           Profil bearbeiten
         </p>
         <p className="text-xs font normal mx-5 mt-9">Aktueller Trainingsplan</p>
-        <div className=" h-32 px-6 bg-medium_dark rounded-3xl mx-5 flex flex-row text-light  items-center">
+        <div className=" h-32 px-6 bg-medium_dark rounded-3xl mx-5 flex flex-row text-light  items-center gap-4">
           <img
             src="./images/svg/Prozent.svg"
             className="text-base font normal text-light"

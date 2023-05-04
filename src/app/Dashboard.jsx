@@ -6,6 +6,8 @@ const PROGRAMS = gql`
     programs {
       name
       id
+      duration
+      focus
     }
   }
 `;
