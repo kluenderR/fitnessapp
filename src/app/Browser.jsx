@@ -4,8 +4,8 @@ import { useQuery, gql } from "@apollo/client";
 import DefaultLayout from "../layouts/DefaultLayout";
 
 const PROGRAMS = gql`
-  query Programs {
-    programs {
+  query Programs($first: Int!, $skip: Int) {
+    programs(first: $first, skip: $skip) {
       name
       id
       duration
@@ -13,8 +13,21 @@ const PROGRAMS = gql`
     }
   }
 `;
+
 const Browser = () => {
-  const { data, loading, error } = useQuery(PROGRAMS);
+  const [offset, setOffset] = useState(0);
+  const [hasMore, setHasMore] = useState(true);
+  const { data, loading, error, fetchMore } = useQuery(PROGRAMS, {
+    variables: { first: 4 },
+    onCompleted: (programData) => {
+      console.log("programData", programData);
+      if (programData.length < 1) {
+        setHasMore(false);
+      }
+      setOffset((oldOffset) => oldOffset + 4);
+    },
+  });
+  
   console.log(data, loading, error);
 
   if (loading) {
@@ -24,15 +37,9 @@ const Browser = () => {
   if (error) {
     return <div>FEHLER</div>;
   }
-  const [items, setItems] = useState(Array.from({ length: 3 }));
-  const fetchMoreData = () => {
-    // a fake async api call like which sends
-    // 20 more records in 1.5 secs
-    setTimeout(() => {
-      setItems(items.concat(Array.from({ length: 3 })));
-    }, 1500);
-  };
+  console.log(data);
 
+  const { programs } = data;
   return (
     <DefaultLayout>
       <div className="py-1 px-3 flex-col space-y-4 text-light">
@@ -40,20 +47,26 @@ const Browser = () => {
           Browse
         </h2>
         <InfiniteScroll
-          dataLength={items.length}
-          next={fetchMoreData}
-          hasMore={true}
+          dataLength={programs.length}
+          next={() => {
+            fetchMore({ variables: { first: 4, skip: offset } });
+          }}
+          hasMore={hasMore}
           loader={<h4>Loading...</h4>}
+          endMessage={
+            <p className="text-xl align-middle">
+              <b>Yay! You have seen it all</b>
+            </p>
+          }
         >
-          {items.map((i, index) => (
+          {programs.map((program, index) => (
             <div
-              className="bg-gradient-to-br from-orange to-pink pt-16 rounded-2xl px-4 py-3 shadow-white h-48 text-center"
-              key={index}
+              className="bg-gradient-to-br from-orange to-pink  pt-16 rounded-2xl px-4 py-3 shadow-light h-48 text-center"
+              key={`program-${index}`}
             >
-              <h2 className="text-2xl font-bold"> {data.programs[0].name}</h2>
-              #{index}
+              <h2 className="text-2xl font-bold"> {program.name}</h2>
             </div>
-        ))}
+          ))}
         </InfiniteScroll>
       </div>
     </DefaultLayout>
@@ -62,7 +75,7 @@ const Browser = () => {
 
 export default Browser;
 
-/*    <div className="bg-gradient-to-br from-orange to-pink pt-16 rounded-2xl   px-4 py-3 shadow-white h-48 text-center">  
+/* <div className="bg-gradient-to-br from-orange to-pink pt-16 rounded-2xl   px-4 py-3 shadow-white h-48 text-center">  
           <h2 className="text-2xl font-bold">Titel des Programms</h2>
         </div> <div className="bg-gradient-to-br from-cyan to-yellowgreen pt-16 rounded-2xl px-4 py-3 shadow-white h-48 text-center">
         <h2 className="text-2xl font-bold">100 Push-Ups Challenge</h2>
@@ -90,4 +103,4 @@ export default Browser;
         </div>
         <div className="bg-gradient-to-br from-cyan to-yellowgreen pt-16 rounded-2xl px-4 py-3 shadow-white h-48 text-center">
           <h2 className="text-2xl font-bold">Titel des Programms</h2>
-        </div>*/
+        </div> */
