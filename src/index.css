@@ -23,6 +23,20 @@ body {
   background: #C4C4C4;
   box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.35);
 }
+.redgradient {
+  background: linear-gradient(135deg, #FFD162, #FF99C3);
+}
+
+.greengradient {
+  background: linear-gradient(135deg, #F5FFA0, #3EF3E8);
+}
+
+.bluegradient {
+  background: linear-gradient(135deg, #3EF3E8, #3EE4E8, #3B85E6, #3A4AE4);
+}
+
+
+
 /* h1 {
   font-style: normal;
   font-weight: 700;

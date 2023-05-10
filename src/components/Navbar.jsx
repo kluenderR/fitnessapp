@@ -5,8 +5,8 @@ import profil, { ReactComponent as ProfilIcon } from "../images/svg/Profil.svg";
 
 const Navbar = () => {
   return (
-    <div>
-      <nav className=" flex flex-row justify-around bg-dark40 gap-2 py-2.5 mt-2 rounded-tl-3xl rounded-tr-3xl ">
+    <div className="fixed bottom-0 left-0 w-full">
+      <nav className="flex flex-row justify-around bg-dark40 gap-2 py-2.5 mt-2 rounded-tl-3xl rounded-tr-3xl ">
         <NavLink
           to="/"
           className={({ isActive }) =>

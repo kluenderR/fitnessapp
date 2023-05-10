@@ -8,8 +8,7 @@ const PROGRAMS = gql`
     programs(first: $first, skip: $skip) {
       name
       id
-      duration
-      focus
+      colorStyle
     }
   }
 `;
@@ -18,13 +17,13 @@ const Browser = () => {
   const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   const { data, loading, error, fetchMore } = useQuery(PROGRAMS, {
-    variables: { first: 4 },
+    variables: { first: 3 },
     onCompleted: (programData) => {
       console.log("programData", programData);
       if (programData.length < 1) {
         setHasMore(false);
       }
-      setOffset((oldOffset) => oldOffset + 4);
+      setOffset((oldOffset) => oldOffset + 3);
     },
   });
   
@@ -49,7 +48,7 @@ const Browser = () => {
         <InfiniteScroll
           dataLength={programs.length}
           next={() => {
-            fetchMore({ variables: { first: 4, skip: offset } });
+            fetchMore({ variables: { first: 3, skip: offset } });
           }}
           hasMore={hasMore}
           loader={<h4>Loading...</h4>}
@@ -61,7 +60,7 @@ const Browser = () => {
         >
           {programs.map((program, index) => (
             <div
-              className="bg-gradient-to-br from-orange to-pink  pt-16 rounded-2xl px-4 py-3 shadow-light h-48 text-center"
+              className={`${program.colorStyle} mb-4 pt-16 rounded-2xl px-4 py-3 shadow-light h-48 text-center`}
               key={`program-${index}`}
             >
               <h2 className="text-2xl font-bold"> {program.name}</h2>
