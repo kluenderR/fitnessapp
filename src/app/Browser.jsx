@@ -1,6 +1,7 @@
 import { useState } from "react";
 import InfiniteScroll from "react-infinite-scroll-component";
 import { useQuery, gql } from "@apollo/client";
+import { Link } from "react-router-dom";
 import DefaultLayout from "../layouts/DefaultLayout";
 
 const PROGRAMS = gql`
@@ -26,7 +27,7 @@ const Browser = () => {
       setOffset((oldOffset) => oldOffset + 3);
     },
   });
-  
+
   console.log(data, loading, error);
 
   if (loading) {
@@ -51,19 +52,16 @@ const Browser = () => {
             fetchMore({ variables: { first: 3, skip: offset } });
           }}
           hasMore={hasMore}
-          loader={<h4>Loading...</h4>}
-          endMessage={
-            <p className="text-xl align-middle">
-              <b>Yay! You have seen it all</b>
-            </p>
-          }
         >
           {programs.map((program, index) => (
             <div
               className={`${program.colorStyle} mb-4 pt-16 rounded-2xl px-4 py-3 shadow-light h-48 text-center`}
               key={`program-${index}`}
             >
-              <h2 className="text-2xl font-bold"> {program.name}</h2>
+              <h2 className="text-2xl font-bold">
+                {" "}
+                <Link to={`/program/${program.id}`}>{program.name}</Link>
+              </h2>
             </div>
           ))}
         </InfiniteScroll>
