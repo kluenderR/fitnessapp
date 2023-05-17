@@ -5,8 +5,8 @@ import { QueryResults } from "../components/QueryResults";
 
 // const PROGRAMS = gql`
 export const GET_PROGRAMS = gql`
-  query getProgram($programId: ID!) {
-    programs(id: $programId) {
+  query getProgram($id: ID!) {
+    program(where: { id: $id }) {
       name
       id
       duration
@@ -17,11 +17,11 @@ export const GET_PROGRAMS = gql`
 `;
 
 const Program = () => {
-  const programId = useParams();
+  const { programId } = useParams();
   console.log(programId);
 
   const { data, loading, error } = useQuery(GET_PROGRAMS, {
-    variables: { programId },
+    variables: { id: programId },
   });
   console.log(data);
   console.log(data, loading, error);

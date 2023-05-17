@@ -18,7 +18,7 @@ const Browser = () => {
   const [offset, setOffset] = useState(0);
   const [hasMore, setHasMore] = useState(true);
   const { data, loading, error, fetchMore } = useQuery(PROGRAMS, {
-    variables: { first: 3 },
+    variables: { first: 3, skip: 0 },
     onCompleted: (programData) => {
       console.log("programData", programData);
       if (programData.length < 1) {
@@ -49,6 +49,7 @@ const Browser = () => {
         <InfiniteScroll
           dataLength={programs.length}
           next={() => {
+            console.log("Offset", offset);
             fetchMore({ variables: { first: 3, skip: offset } });
           }}
           hasMore={hasMore}
@@ -58,7 +59,7 @@ const Browser = () => {
               className={`${program.colorStyle} mb-4 pt-16 rounded-2xl px-4 py-3 shadow-light h-48 text-center`}
               key={`program-${index}`}
             >
-              <h2 className="text-2xl font-bold p-8">
+              <h2 className="text-2xl font-bold p-8 hover: opacity-100">
                 <Link to={`/program/${program.id}`}>{program.name}</Link>
               </h2>
             </div>
