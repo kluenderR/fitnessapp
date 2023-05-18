@@ -9,6 +9,8 @@
   },
   "dependencies": {
     "@apollo/client": "^3.7.12",
+    "@apollo/space-kit": "^9.11.0",
+    "@emotion/styled": "^11.11.0",
     "@svgr/cli": "^7.0.0",
     "@svgr/core": "^7.0.0",
     "graphql": "^16.6.0",

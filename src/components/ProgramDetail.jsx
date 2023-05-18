@@ -4,15 +4,33 @@ import xclose, {
   ReactComponent as XcloseIcon,
 } from "../images/svg/X-close.svg";
 
-export const ProgramDetail = ({program}) => {
-  const { name, id, duration, focus, colorStyle } = program;
+export const ProgramDetail = ({ program }) => {
+  const { name, id, focus, difficulty, duration, colorStyle } = program;
+  // alternativ statt {(program)}Objekt (props)Array und dann program.props
+  console.log(focus, difficulty, duration);
   return (
-    <div className="text-light mb-4 pt-16 rounded-2xl px-4 py-3 shadow-light h-48 text-center">
-      {name}
+    <>
       <Link to="/browser" className="fixed top-5 right-5">
         <XcloseIcon />
       </Link>
-    </div>
+      <div className={`${colorStyle} h-[75vh] w-screen text-light`}>
+        <h1 className=" text-center pt-60">{name}</h1>
+        <div className="flex justify-around gap-5">
+          <div className="flex flex-col items-center">
+            <img src="../images/svg/Ellipse 1.svg"></img>
+            <p className="mb-4 mt-2 text-center uppercase">{focus}</p>
+          </div>
+          <div className="flex flex-col items-center">
+            <img src="../images/svg/Ellipse 1.svg"></img>
+            <p className="mb-4 mt-2 text-center uppercase">{difficulty}</p>
+          </div>
+          <div className="flex flex-col items-center">
+            <img src="../images/svg/Ellipse 1.svg"></img>
+            <p className="mb-4 mt-2 text-center uppercase">{duration} Wochen</p>
+          </div>
+        </div>
+      </div>
+    </>
   );
 };
 

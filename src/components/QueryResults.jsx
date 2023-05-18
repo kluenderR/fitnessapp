@@ -1,4 +1,5 @@
 import React from "react";
+// import styled from '"@emotion/styled"';
 // import { LoadingSpinner } from "@apollo/space-kit/Loaders/LoadingSpinner";
 
 // eslint-disable-next-line consistent-return
@@ -22,9 +23,6 @@ export const QueryResults = ({ loading, error, data, children }) => {
         LOADING
       </div>
     );
-    /* <div className=" flex justify-center align-middle w-3 h-3">
-        <LoadingSpinner data-testid="spinner" size="large" theme="grayscale" />;
-      </div> */
   }
   if (!data) {
     return <p>Nothing to show...</p>;
@@ -35,3 +33,7 @@ export const QueryResults = ({ loading, error, data, children }) => {
 };
 console.log(QueryResults);
 export default QueryResults;
+
+/*     <div className=" flex justify-center align-middle w-3 h-3">
+        <LoadingSpinner data-testid="spinner" size="large" theme="grayscale" />;
+      </div> */

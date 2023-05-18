@@ -34,7 +34,29 @@ body {
 .bluegradient {
   background: linear-gradient(135deg, #3EF3E8, #3EE4E8, #3B85E6, #3A4AE4);
 }
+p {
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 21px;
+}
 
+h1 {
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 54px;
+}
+
+h2 {
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 36px;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 700;
+  line-height: 27px;
+}
 
 
 /* h1 {
