@@ -31,29 +31,30 @@ const Dashboard = () => {
       </h1>
       <img
         src="./images/img/Layer 11 1.png"
-        className=" mx-auto , my-0, px-6, scale-75"
+        className=" mx-auto my-5 px-6 scale-90"
       />
-      <div className="flex space-x-8 py-0">
-        <h2 className=" inline-block text-1xl sm:text-xl font-bold text-light ml-6 pb-0">
+      <div className="flex space-x-8 pb-2 items-baseline">
+        <h2 className=" inline-block text-xl font-bold text-light ml-6 pb-0">
           Dein Workout heute
         </h2>
         <p className="  inline-block text-xs sm:text-xl font-normal text-light pb-0 pt-1.5 pl-4">
           Trainingsplan
         </p>
       </div>
-      <div className=" h-48 px-6 bg-medium_dark rounded-3xl mx-5">
-        <div className="h-full flex flex-col text-light ">
+      <div className=" h-56 px-6 bg-medium_dark rounded-3xl mx-5 ">
+        <div className="h-full flex flex-col text-light justify-end ">
           <h3 className="text-lg font-normal">Tag 2</h3>
-          <h2 className="text-2xl sm:text-xl font-bold">
+          <h2 className="text-2xl font-bold">
             {data.programs[0].name}
           </h2>
-          <div className="flex row mb-5"></div>
-          <p className="text-xs font normal text-light">
-            {data.programs[0].duration} Min.
-          </p>
-          <p className="text-xs font normal text-light">
-            {data.programs[0].focus}
-          </p>
+          <div className="flex row mb-5 gap-10">
+            <p className="text-xs font normal text-light">
+              {data.programs[0].duration} Min.
+            </p>
+            <p className="text-xs font normal text-light">
+              {data.programs[0].focus}
+            </p>
+          </div>
         </div>
       </div>
     </DefaultLayout>
