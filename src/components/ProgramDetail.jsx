@@ -83,13 +83,13 @@ export const ProgramDetail = (props) => {
         <button className="text-xs bg-dark">Alle anzeigen</button>
       </div>
       <div>
-        <div className="text-light h-[100px] w-[335px] ml-5 mr-9 my-4">
+        <div className="text-light h-[100px] w-[335px] ml-5 mr-9 my-4 mb-40">
           {workouts.map((workout, index) => (
-            <div key={`workout-${index}`}>
+            <div key={`workout-${index}`} className="flex  justify-center mb-3">
               <div
                 className={`${workout.colorStylew} inline-block rounded-l-2xl w-1/4 h-[100px]`}
               ></div>
-              <div className="bg-medium_dark inline-block rounded-r-2xl w-3/4 h-full pr-6">
+              <div className="bg-medium_dark inline-block rounded-r-2xl w-3/4 pr-6 h-[100px]">
                 <div className="ml-3.5 py-2.5">
                   <h3>Tag {index + 1}</h3>
                   <p className="text-xs mt-6">{workout.duration} Min.</p>
