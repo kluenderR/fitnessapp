@@ -1,5 +1,6 @@
 import { useQuery, gql } from "@apollo/client";
 import { Link, useParams } from "react-router-dom";
+import { useState } from "react";
 import xclose, {
   ReactComponent as XcloseIcon,
 } from "../images/svg/X-close.svg";
@@ -10,7 +11,7 @@ import xclose, {
 
 // const PROGRAMS = gql`
 const GET_PROGRAMS = gql`
-  query getProgram($id: ID!) {
+  query getProgram($id: ID!, $first: Int) {
     program(where: { id: $id }) {
       id
       name
@@ -19,7 +20,7 @@ const GET_PROGRAMS = gql`
       focus
       duration
       difficulty
-      workouts {
+      workouts(first: $first) {
         id
         category
         duration
@@ -32,9 +33,9 @@ const GET_PROGRAMS = gql`
 const Program = () => {
   const { programId } = useParams();
   console.log(programId);
-
-  const { data, loading, error } = useQuery(GET_PROGRAMS, {
-    variables: { id: programId },
+  const [hasMore, setHasMore] = useState(true);
+  const { data, loading, error, refetch } = useQuery(GET_PROGRAMS, {
+    variables: { id: programId, first: 3 },
   });
   console.log(data, loading, error);
   if (loading) {
@@ -126,7 +127,18 @@ const Program = () => {
       </div>
       <div className="mt-14 px-6 py-4 flex justify-between items-baseline text-light">
         <h3>{workouts.length} Tage</h3>
-        <button className="text-xs bg-dark">Alle anzeigen</button>
+
+        {hasMore && (
+          <button
+            onClick={() => {
+              refetch({ first: undefined });
+              setHasMore(false);
+            }}
+            className="text-xs bg-dark"
+          >
+            Alle anzeigen
+          </button>
+        )}
       </div>
       <div>
         <div className="text-light h-[100px] w-[335px] ml-5 mr-9 my-4 mb-40">
