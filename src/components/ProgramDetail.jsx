@@ -5,8 +5,18 @@ import xclose, {
 } from "../images/svg/X-close.svg";
 
 export const ProgramDetail = (props) => {
-  const { name, id, focus, difficulty, duration, colorStyle, description } =
-    props.program;
+  const {
+    name,
+    focus,
+    difficulty,
+    colorStyle,
+    description,
+    workouts,
+    id,
+    colorStylew,
+    duration,
+    workout,
+  } = props.program;
   // alternativ statt {(program)}Objekt (props)Array und dann program.props
   console.log(focus, difficulty, duration, description);
   return (
@@ -35,8 +45,8 @@ export const ProgramDetail = (props) => {
       </div>
       <div className="flex justify-center">
         <Link
-          to={`/singleworkout/${id}`}
-          className={`${colorStyle} rounded-3xl fixed px-4 py-3 bottom-8 shadow-md z-[12]`}
+          to={`/workout/${id}`}
+          className={`${colorStyle} text-light rounded-3xl fixed px-4 py-3 bottom-8 shadow-md z-[12]`}
         >
           <p>jetzt starten</p>
         </Link>
@@ -68,7 +78,29 @@ export const ProgramDetail = (props) => {
           </div>
         </div>
       </div>
+      <div className="mt-14 px-6 py-4 flex justify-between items-baseline text-light">
+        <h3>21 Tage</h3>
+        <button className="text-xs bg-dark">Alle anzeigen</button>
       </div>
+      <div>
+        <div className="text-light h-[100px] w-[335px] ml-5 mr-9 my-4">
+          {workouts.map((workout, index) => (
+            <div key={`workout-${index}`}>
+              <div
+                className={`${workout.colorStylew} inline-block rounded-l-2xl w-1/4 h-[100px]`}
+              ></div>
+              <div className="bg-medium_dark inline-block rounded-r-2xl w-3/4 h-full pr-6">
+                <div className="ml-3.5 py-2.5">
+                  <h3>Tag {index + 1}</h3>
+                  <p className="text-xs mt-6">{workout.duration} Min.</p>
+                  <p className="text-xs">{workout.category}</p>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
   );
 };
 

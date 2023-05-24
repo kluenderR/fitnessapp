@@ -15,7 +15,10 @@ export const GET_PROGRAMS = gql`
       duration
       difficulty
       workouts {
+        id
         category
+        duration
+        colorStylew
       }
       image {
         url
