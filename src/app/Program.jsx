@@ -1,9 +1,11 @@
 import { useQuery, gql } from "@apollo/client";
 import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
+import Workout from "./Workout";
 import xclose, {
   ReactComponent as XcloseIcon,
 } from "../images/svg/X-close.svg";
+import { render } from "react-dom";
 // import styled from '"@emotion/styled"';
 // import { LoadingSpinner } from "@apollo/space-kit/Loaders/LoadingSpinner";
 // { ProgramDetail } from "../components/ProgramDetail";
@@ -63,7 +65,6 @@ const Program = () => {
   }
   const { program } = data;
   const { workouts } = program;
-
   return (
     <div>
       <Link to="/browser" className="fixed top-5 right-5">
@@ -92,7 +93,7 @@ const Program = () => {
       </div>
       <div className="flex justify-center">
         <Link
-          to={`/workout/${program.workouts[0].id}`}
+          to={`/program/${program.id}/workout/${program.workouts[0].id}`}
           className={`${program.colorStyle} text-light rounded-3xl fixed px-4 py-3 bottom-8 shadow-md z-[12]`}
         >
           <p>jetzt starten</p>
@@ -127,7 +128,7 @@ const Program = () => {
       </div>
       <div className="mt-14 px-6 py-4 flex justify-between items-baseline text-light">
         <h3>{workouts.length} Tage</h3>
-
+        {/* hier wird durch die Und-Abfrage sichergestellt, dass der Button verschwindet/ nicht erscheint, wenn eine der beiden Bedingungen nicht mehr erfüllt ist // undefined sorgt in diesem Fall dafür, dass alle restlichen Workouts geladen werden, anschließend hasMore auf false gesetzt */}
         {hasMore && (
           <button
             onClick={() => {
