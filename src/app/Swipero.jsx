@@ -18,7 +18,7 @@ const Swipero = () => {
         }}
         navigation={true}
         modules={[Pagination, Navigation]}
-        className="mySwiper flex flex-col justify-between mt-52 gap-20"
+        className="mySwiper flex flex-col justify-between mt-52"
       >
         <SwiperSlide className="text-center text-light mt-24">
         <ExerciseOne />

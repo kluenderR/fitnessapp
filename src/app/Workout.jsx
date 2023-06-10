@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-// import { useNavigate } from "react-router";
+import { useNavigate } from "react-router";
 import { useQuery, gql } from "@apollo/client";
 import { Link, useParams } from "react-router-dom";
 import backbtn, { ReactComponent as Backbtn } from "../images/svg/Backbtn.svg";
@@ -22,6 +22,7 @@ const GET_WORKOUTS = gql`
 `;
 
 const Workout = () => {
+ const navigate = useNavigate();
   const { Id, programId } = useParams();
   console.log(Id);
   const { data, loading, error } = useQuery(GET_WORKOUTS, {
@@ -58,9 +59,9 @@ const Workout = () => {
   return (
     <>
       <div>
-        <Link to="/program" className="fixed top-5 right-5">
-          <Backbtn />
-        </Link>
+      <button onClick={() => navigate(-1)} className="fixed top-5 right-5">
+        <Backbtn />
+      </button>
       </div>
       <p className="text-light text-xs text-center mt-5">{program.name}</p>
       <div className="text-light flex flex-col gap-52 mt-60">
@@ -139,3 +140,7 @@ const Workout = () => {
 };
 
 export default Workout; */
+
+/* <Link to="/program" className="fixed top-5 right-5">
+          <Backbtn />
+        </Link> */

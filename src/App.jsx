@@ -7,6 +7,7 @@ import Program from "./app/Program";
 import Workout from "./app/Workout";
 import Swipero from "./app/Swipero";
 import NoMatch from "./app/NoMatch";
+import Slider from "./app/Slider";
 
 const App = () => {
   return (
@@ -17,6 +18,7 @@ const App = () => {
       <Route path="program/:programId" element={<Program />} />
       <Route path="/program/:programId/workout/:Id" element={<Workout />} />
       <Route path="swipero/:Id" element={<Swipero />} />
+      <Route path="slider/:Id" element={<Slider />} />
 
       {/* Using path="*"" means "match anything", so this route
                 acts like a catch-all for URLs that we don't have explicit
