@@ -3,7 +3,7 @@ import ExerciseNavbar from "../components/ExerciseNavbar";
 
 const ExerciseLayout = ({ children }) => {
   return (
-    <div className="relative pb-12">
+    <div className="relative pb-14">
       {children}
       <ExerciseNavbar />
     </div>

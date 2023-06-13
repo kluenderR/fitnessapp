@@ -8,6 +8,7 @@ const GET_WORKOUTS = gql`
   query getWorkouts($id: ID!, $programId: ID!) {
     program(where: { id: $programId }) {
       name
+      colorStyle
       workoutsWithDay(where: { workout: { id: $id } }) {
         day
         workout {
@@ -53,6 +54,7 @@ const Workout = () => {
     return <p>Nothing to show...</p>;
   }
   const { program } = data;
+  console.log(program);
   const workoutWithDay = program.workoutsWithDay[0];
   const { day, workout } = workoutWithDay;
   console.log(workoutWithDay);
@@ -73,11 +75,11 @@ const Workout = () => {
           </div>
         </div>
         <Link
-          to={`/swipero/${workout.id}`}
+          to={`/slider/${workout.id}`}
           className={`${workout.colorStylew} mx-auto shadow-lg shadow[box-shadow: 0px 3px 10px 0px #00000059;
           ] rounded-3xl px-4 py-3 w-20`}
         >
-          <p>los!</p>
+          <p className="text-center">los!</p>
         </Link>
       </div>
     </>

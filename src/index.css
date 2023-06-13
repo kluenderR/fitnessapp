@@ -57,6 +57,42 @@ h3 {
   font-weight: 700;
   line-height: 27px;
 }
+.swiper {
+  width: 100%;
+  height: 100%;
+  color:#FBFBFB;
+}
+.swiperslide{
+  text-align: center;
+  font-size: 18px;
+  background: #fff;
+
+  /* Center slide text vertically */
+  display: flex !important;
+  justify-content: center !important;
+  align-items: center !important;
+}
+
+.swiper-button-next, .swiper-button-prev
+{
+  color: #FBFBFB !important;
+  top: 50% !important;
+  position: absolute !important;
+}
+.swiper-pagination-progressbar{
+  position: fixed !important;
+  top: 4.5rem !important;
+  right: 0rem !important;
+  left: auto !important;
+  width: 50% !important;
+  height: 6px !important;
+  background-color:#3A4151 !important;
+  color: #FBFBFB !important;
+  --swiper-theme-color: linear-gradient(135deg, #FFD162, #FF99C3);
+}
+
+
+
 
 
 /* h1 {

@@ -1,11 +1,9 @@
 import { useQuery, gql } from "@apollo/client";
 import { Link, useParams } from "react-router-dom";
 import { useState } from "react";
-import Workout from "./Workout";
 import xclose, {
   ReactComponent as XcloseIcon,
 } from "../images/svg/X-close.svg";
-import { render } from "react-dom";
 // import styled from '"@emotion/styled"';
 // import { LoadingSpinner } from "@apollo/space-kit/Loaders/LoadingSpinner";
 // { ProgramDetail } from "../components/ProgramDetail";
@@ -22,11 +20,14 @@ const GET_PROGRAMS = gql`
       focus
       duration
       difficulty
-      workouts(first: $first) {
-        id
-        category
-        duration
-        colorStylew
+      workoutsWithDay(first: $first) {
+        day
+        workout {
+          category
+          colorStylew
+          id
+          duration
+        }
       }
     }
   }
@@ -64,7 +65,9 @@ const Program = () => {
     return <p>Nothing to show...</p>;
   }
   const { program } = data;
-  const { workouts } = program;
+  console.log(program);
+  const { workoutsWithDay } = program;
+  const { workout } = workoutsWithDay[0];
   return (
     <div>
       <Link to="/browser" className="fixed top-5 right-5">
@@ -93,7 +96,7 @@ const Program = () => {
       </div>
       <div className="flex justify-center">
         <Link
-          to={`/program/${program.id}/workout/${program.workouts[0].id}`}
+          to={`/program/${program.id}/workout/${workout.id}`}
           className={`${program.colorStyle} text-light rounded-3xl fixed px-4 py-3 bottom-8 shadow-md z-[12]`}
         >
           <p>jetzt starten</p>
@@ -127,7 +130,7 @@ const Program = () => {
         </div>
       </div>
       <div className="mt-14 px-6 py-4 flex justify-between items-baseline text-light">
-        <h3>{workouts.length} Tage</h3>
+        <h3>{workoutsWithDay.length} Tage</h3>
         {/* hier wird durch die Und-Abfrage sichergestellt, dass der Button verschwindet/ nicht erscheint, wenn eine der beiden Bedingungen nicht mehr erfüllt ist // undefined sorgt in diesem Fall dafür, dass alle restlichen Workouts geladen werden, anschließend hasMore auf false gesetzt */}
         {hasMore && (
           <button
@@ -143,16 +146,18 @@ const Program = () => {
       </div>
       <div>
         <div className="text-light h-[100px] w-[335px] ml-5 mr-9 my-4 mb-40">
-          {workouts.map((workout, index) => (
+          {workoutsWithDay.map((workoutWithDay, index) => (
             <div key={`workout-${index}`} className="flex  justify-center mb-3">
               <div
-                className={`${workout.colorStylew} inline-block rounded-l-2xl w-1/4 h-[100px]`}
+                className={`${workoutWithDay.workout.colorStylew} inline-block rounded-l-2xl w-1/4 h-[100px]`}
               ></div>
               <div className="bg-medium_dark inline-block rounded-r-2xl w-3/4 pr-6 h-[100px]">
                 <div className="ml-3.5 py-2.5">
-                  <h3>Tag {index + 1}</h3>
-                  <p className="text-xs mt-6">{workout.duration} Min.</p>
-                  <p className="text-xs">{workout.category}</p>
+                  <h3>Tag {workoutWithDay.day}</h3>
+                  <p className="text-xs mt-6">
+                    {workoutWithDay.workout.duration} Min.
+                  </p>
+                  <p className="text-xs">{workoutWithDay.workout.category}</p>
                 </div>
               </div>
             </div>
