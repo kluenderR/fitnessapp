@@ -76,7 +76,7 @@ h3 {
 .swiper-button-next, .swiper-button-prev
 {
   color: #FBFBFB !important;
-  top: 50% !important;
+  top: 30% !important;
   position: absolute !important;
 }
 .swiper-pagination-progressbar{

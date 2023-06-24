@@ -3,18 +3,68 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import { Navigation, Pagination } from "swiper";
 import { useQuery, gql } from "@apollo/client";
 import { Link, useParams, NavLink } from "react-router-dom";
-import ExerciseOne from "../components/ExerciseOne";
-import ExerciseTwo from "../components/ExerciseTwo";
-import ExerciseThree from "../components/ExerciseThree";
+import ExerciseWithReps from "../components/ExerciseWithReps";
+import ExerciseWithDuration from "../components/ExerciseWithDuration";
 import "swiper/swiper.css";
 import "swiper/swiper-bundle.css";
 import ExerciseLayout from "../layouts/ExerciseLayout";
-import xclose, {
-  ReactComponent as XcloseIcon,
-} from "../images/svg/X-close.svg";
-import info, { ReactComponent as InfoIcon } from "../images/svg/Info.svg";
+
+const WORKOUT = gql`
+  query Workout($id: ID!) {
+    workout(where: { id: $id }) {
+      exercises {
+        ... on ExerciseWithDuration {
+          id
+          duration
+          exercise {
+            name
+            type
+            description
+          }
+        }
+        ... on ExerciseWithReps {
+          id
+          reps
+          exercise {
+            description
+            id
+            name
+            type
+          }
+        }
+      }
+    }
+  }
+`;
 
 const Slider = () => {
+  const { id } = useParams();
+  const { data, loading, error } = useQuery(WORKOUT, {
+    variables: { id },
+  });
+  console.log(data, loading, error);
+  if (loading) {
+    return (
+      <div
+        className="text-light mb-4 pt-16 px-4 py-3 shadow-light
+    text-center"
+      >
+        LOADING
+      </div>
+    );
+  }
+  if (error) {
+    return (
+      <p
+        className="text-light mb-4 pt-16 px-4 py-3 shadow-light
+    text-center"
+      >
+        ERROR: {error.message}
+      </p>
+    );
+  }
+
+  const { exercises } = data.workout;
   return (
     <ExerciseLayout>
       <Swiper
@@ -28,21 +78,17 @@ const Slider = () => {
         loop={false}
         className="mySwiper h-full w-full mt-28"
       >
-        <SwiperSlide>
-          <p className="pt-56 pb-56 m-auto text-center">
-            <ExerciseOne />
-          </p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <p className="pt-56 pb-56 m-auto text-center">
-            <ExerciseTwo />
-          </p>
-        </SwiperSlide>
-        <SwiperSlide>
-          <p className="pt-56 pb-56 m-auto text-center">
-            <ExerciseThree />
-          </p>
-        </SwiperSlide>
+        {exercises.map((exercise, i) => (
+          <SwiperSlide key={`exerciseSlide-${i}`}>
+            <div className="pt-52 pb-56 m-auto text-center">
+              {exercise.exercise.type === "reps" ? (
+                <ExerciseWithReps exercise={exercise} />
+              ) : (
+                <ExerciseWithDuration exercise={exercise} />
+              )}
+            </div>
+          </SwiperSlide>
+        ))}
       </Swiper>
     </ExerciseLayout>
   );
@@ -50,16 +96,13 @@ const Slider = () => {
 
 export default Slider;
 
-/*  <div>
-          <Link to="/browser" className="fixed top-5 right-5">
-            <XcloseIcon />
-          </Link>
-          <ExerciseOne />
-          <div className="fixed bottom-0 left-0 w-full z-50">
-            <nav className="flex flex-row justify-end bg-dark40 py-2.5 mt-2 rounded-tl-3xl rounded-tr-3xl ">
-              <NavLink to="/browser" className="mr-5">
-                <InfoIcon />
-              </NavLink>
-            </nav>
-          </div>
-        </div> */
+// eslint-disable-next-line no-lone-blocks
+{
+  /* name={`${exercise.name}`} */
+}
+// eslint-disable-next-line no-lone-blocks
+{
+  /* const exercise = {
+  name: "test"
+   }; */
+}
