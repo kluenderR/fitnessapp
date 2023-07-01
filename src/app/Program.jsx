@@ -96,7 +96,7 @@ const Program = () => {
       </div>
       <div className="flex justify-center">
         <Link
-          to={`/program/${program.id}/workout/${workout.id}`}
+          to={`/program/${program.id}/workout/${workout.id}/start`}
           className={`${program.colorStyle} text-light rounded-3xl fixed px-4 py-3 bottom-8 shadow-md z-[12]`}
         >
           <p>jetzt starten</p>

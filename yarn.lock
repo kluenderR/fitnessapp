@@ -3090,6 +3090,7 @@ __metadata:
     postcss: ^8.4.21
     prettier: ^2.8.7
     react: ^18.2.0
+    react-countdown-circle-timer: ^3.2.1
     react-devtools: ^2.1.7
     react-dom: ^18.2.0
     react-infinite-scroll-component: ^6.1.0
@@ -5083,6 +5084,15 @@ __metadata:
   bin:
     rc: ./cli.js
   checksum: 2e26e052f8be2abd64e6d1dabfbd7be03f80ec18ccbc49562d31f617d0015fbdbcf0f9eed30346ea6ab789e0fdfe4337f033f8016efdbee0df5354751842080e
+  languageName: node
+  linkType: hard
+
+"react-countdown-circle-timer@npm:^3.2.1":
+  version: 3.2.1
+  resolution: "react-countdown-circle-timer@npm:3.2.1"
+  peerDependencies:
+    react: ">=16.8.0"
+  checksum: df61291c641a6484ae03ab7b57f5b56caf7187e9ba8364f33d7c0e107c8174a2e59e40fa555103258041a6af7563c377ae3b35e2bcbc52aa17b3f13151ec69dc
   languageName: node
   linkType: hard
 

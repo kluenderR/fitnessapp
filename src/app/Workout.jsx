@@ -23,7 +23,7 @@ const GET_WORKOUTS = gql`
 `;
 
 const Workout = () => {
- const navigate = useNavigate();
+  const navigate = useNavigate();
   const { Id, programId } = useParams();
   console.log(Id);
   const { data, loading, error } = useQuery(GET_WORKOUTS, {
@@ -75,7 +75,7 @@ const Workout = () => {
           </div>
         </div>
         <Link
-          to={`/slider/${workout.id}`}
+          to={`/program/${programId}/workout/${workout.id}`}
           className={`${workout.colorStylew} mx-auto shadow-lg shadow[box-shadow: 0px 3px 10px 0px #00000059;
           ] rounded-3xl px-4 py-3 w-20`}
         >

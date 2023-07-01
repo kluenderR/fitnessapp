@@ -16,10 +16,15 @@ const App = () => {
       <Route path="/browser" element={<Browser />} />
       <Route path="/" element={<Dashboard />} />
       <Route path="program/:programId" element={<Program />} />
-      <Route path="/program/:programId/workout/:Id" element={<Workout />} />
-      <Route path="/slider/:id" element={<Slider />} />
+      <Route
+        path="/program/:programId/workout/:Id/start"
+        element={<Workout />}
+      />
+      <Route
+        path="/program/:programId/workout/:workoutId"
+        element={<Slider />}
+      />
       <Route path="/complete/:id" element={<Complete />} />
-
 
       {/* Using path="*"" means "match anything", so this route
                 acts like a catch-all for URLs that we don't have explicit

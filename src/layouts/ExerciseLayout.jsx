@@ -1,7 +1,7 @@
 import React from "react";
 import ExerciseNavbar from "../components/ExerciseNavbar";
 
-const ExerciseLayout = ({children, exercise, test }) => {
+const ExerciseLayout = ({ children, exercise }) => {
   return (
     <div className="relative pb-14">
       {children}
